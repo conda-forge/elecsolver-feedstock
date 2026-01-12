@@ -1,0 +1,58 @@
+schema_version: 1
+
+context:
+  name: elecsolver
+  version: 1.0.6
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://github.com/williampiat3/ElecSolver/archive/refs/tags/${{ version }}.tar.gz
+  sha256: 440269a4b379a703dbd0bc5da820c95fc2e48248b8c3e723e0984267ae4f0a5e
+
+
+
+build:
+  noarch: python
+  script: ${{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv
+  number: 1
+
+requirements:
+  host:
+    - setuptools >=60
+    - setuptools-scm >=8.0
+    - pip
+    - python ${{ python_min }}.*
+  run:
+    - python >=${{ python_min }}
+    - numpy
+    - networkx
+    - scipy
+
+tests:
+  - python:
+      imports:
+        - ElecSolver
+  - script:
+      - python -m pytest tests
+    requirements:
+      run:
+        - python ${{ python_min }}.*
+        - python-mumps
+        - pytest
+    files:
+      source:
+        - tests
+
+about:
+  homepage: https://github.com/williampiat3/ElecSolver
+  summary: Electric system formulation in Python
+  license: MIT
+  license_file: LICENSE.txt
+
+extra:
+  recipe-maintainers:
+    - williampiat3
+    - Pimss
