@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: elecsolver
-  version: 2.0.1
+  version: 2.1.0
 
 package:
   name: ${{ name|lower }}
@@ -10,7 +10,7 @@ package:
 
 source:
   url: https://github.com/williampiat3/ElecSolver/archive/refs/tags/${{ version }}.tar.gz
-  sha256: 9692d49670db736fb29fec9c5ccf7e16af43e4d8729bdb516f01b1cad120b5ff
+  sha256: ba0c03e96f642086cc1780f3deb4a932df2ba8c7f4c4e148781818da3ff4fc06
 
 
 
