@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: elecsolver
-  version: 2.1.0
+  version: 2.2.0
 
 package:
   name: ${{ name|lower }}
@@ -10,7 +10,7 @@ package:
 
 source:
   url: https://github.com/williampiat3/ElecSolver/archive/refs/tags/${{ version }}.tar.gz
-  sha256: ba0c03e96f642086cc1780f3deb4a932df2ba8c7f4c4e148781818da3ff4fc06
+  sha256: ecf8f60ce02c7cec5fa7555d1664fe6d69b159007caa9ca4b10b77b1e6677715
 
 
 
@@ -28,11 +28,13 @@ requirements:
   run:
     - python >=${{ python_min }}
     - numpy
-    - networkx
     - scipy
 
 tests:
   - python:
+      python_version:
+        - ${{ python_min }}.*
+        - "*"
       imports:
         - ElecSolver
   - script:
@@ -42,6 +44,7 @@ tests:
         - python ${{ python_min }}.*
         - python-mumps
         - pytest
+        - networkx
     files:
       source:
         - tests
